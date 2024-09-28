@@ -38,6 +38,35 @@ function App() {
               navbar
             </div>
           </div>
+
+          <div>
+            <Routes>
+              {/* dashboard */}
+              <Route path="/" element={'<Home />'} />
+              <Route path="/ecommerce" element={'<Home />'} />
+
+              {/* pages */}
+              <Route path="/orders" element={'orders'} />
+              <Route path="/employees" element={'employees'} />
+              <Route path="/customers" element={'customers'} />
+
+              {/* apps */}
+              <Route path="/calender" element={'calender'} />
+              <Route path="/kanban" element={'kanban'} />
+              <Route path="/editor" element={'editor'} />
+              <Route path="/color-piker" element={'color-piker'} />
+
+              {/* charts */}
+              <Route path="/line" element={'line'} />
+              <Route path="/area" element={'area'} />
+              <Route path="/bar" element={'bar'} />
+              <Route path="/pie" element={'pie'} />
+              <Route path="/financial" element={'financial'} />
+              <Route path="/color-mapping" element={'color-mapping'} />
+              <Route path="/pyramid" element={'pyramid'} />
+              <Route path="/staked" element={'staked'} />
+            </Routes>
+          </div>
         </div>
       </BrowserRouter>
     </div>
