@@ -1,7 +1,27 @@
 import React from 'react';
+import {
+  HtmlEditor,
+  Image,
+  Inject,
+  Link,
+  QuickToolbar,
+  RichTextEditorComponent,
+  Toolbar,
+} from '@syncfusion/ej2-react-richtexteditor';
+
+import { Header } from '../components';
+import { EditorData } from '../data/dummy';
 
 const Editor = () => {
-  return <div>Editor</div>;
+  return (
+    <div className="m-2 md:m-10 p-2 md:p-10 mt-10 bg-white rounded-3xl">
+      <Header category="App" title="Editor" />
+      <RichTextEditorComponent>
+        <Inject services={[Toolbar, Image, Link, HtmlEditor, QuickToolbar]} />
+        <EditorData />
+      </RichTextEditorComponent>
+    </div>
+  );
 };
 
 export default Editor;
