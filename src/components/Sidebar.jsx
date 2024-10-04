@@ -13,7 +13,8 @@ const normalLink =
   'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2';
 
 const Sidebar = () => {
-  const { activeMenu, setActiveMenu, screenSize } = useStateContext();
+  const { activeMenu, setActiveMenu, screenSize, currentColor } =
+    useStateContext();
 
   const closeMenu = () => {
     if (screenSize <= 900 && activeMenu) setActiveMenu(false);
@@ -51,6 +52,9 @@ const Sidebar = () => {
                     to={`/${subLink.name}`}
                     key={subLink.name}
                     onClick={closeMenu}
+                    style={({ isActive }) => ({
+                      backgroundColor: isActive ? currentColor : '',
+                    })}
                     className={({ isActive }) =>
                       isActive ? activeLink : normalLink
                     }

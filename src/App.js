@@ -28,22 +28,43 @@ import { useStateContext } from './contexts/ContextProvider';
 import './App.css';
 
 function App() {
-  const { activeMenu } = useStateContext();
+  const {
+    activeMenu,
+    themeSettings,
+    setThemeSettings,
+    currentColor,
+    currentMode,
+    setCurrentMode,
+    setCurrentColor,
+  } = useStateContext();
+
+  useEffect(() => {
+    const color = localStorage.getItem('color');
+    const mode = localStorage.getItem('mode');
+    if (color) {
+      setCurrentColor(color);
+    }
+    if (mode) {
+      setCurrentMode(mode);
+    }
+  }, []); // eslint-disable-line
 
   return (
-    <div className="App">
+    <div className={currentMode === 'Dark' ? 'dark' : ''}>
       <BrowserRouter>
         <div className="flex relative dark:bg-main-dark-bg ">
           <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
             <TooltipComponent content="Settings" position="TopCenter">
               <button
                 type="button"
-                className="text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white rounded-full bg-blue-800"
+                className={`text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white rounded-full bg-[${currentColor}]`}
+                onClick={() => setThemeSettings(true)}
               >
                 <FiSettings />
               </button>
             </TooltipComponent>
           </div>
+
           {activeMenu ? (
             <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
               <Sidebar />
@@ -53,8 +74,9 @@ function App() {
               <Sidebar />
             </div>
           )}
+
           <div
-            className={`dark:bg-main-bg bg-main-bg min-h-screen w-full ${
+            className={`dark:bg-main-dark-bg bg-main-bg min-h-screen w-full ${
               activeMenu ? 'md:ml-72' : 'flex-2'
             }`}
           >
@@ -63,6 +85,8 @@ function App() {
             </div>
 
             <div>
+              {themeSettings && <ThemeSettings />}
+
               <Routes>
                 {/* dashboard */}
                 <Route path="/" element={<Ecommerce />} />

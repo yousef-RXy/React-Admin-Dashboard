@@ -16,7 +16,7 @@ import { Header } from '../components';
 
 const Calendar = () => {
   return (
-    <div className="m-2 md:m-10 p-2 md:p-10 mt-10 bg-white rounded-3xl">
+    <div className="m-2 md:m-10 p-2 md:p-10 mt-16 bg-white rounded-3xl">
       <Header category="App" title="Calendar" />
       <ScheduleComponent
         width="100%"
