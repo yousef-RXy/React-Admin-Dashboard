@@ -77,7 +77,7 @@ function App() {
                 <Route path="/calender" element={<Calendar />} />
                 <Route path="/kanban" element={<Kanban />} />
                 <Route path="/editor" element={<Editor />} />
-                <Route path="/color-piker" element={<ColorPicker />} />
+                <Route path="/color-picker" element={<ColorPicker />} />
 
                 {/* charts */}
                 <Route path="/line" element={<Line />} />
