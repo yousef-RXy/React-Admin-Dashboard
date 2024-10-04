@@ -1,13 +1,10 @@
 import React from 'react';
 
-import { ChartsHeader, Header, LineChart } from '../../components';
+import { ChartsHeader, LineChart } from '../../components';
 
-{
-  /* <ChartsHeader category="Line" title="Inflation Rate" /> */
-}
 const Line = () => (
-  <div className="m-2 md:m-10 p-2 md:p-10 mt-16 bg-white dark:bg-secondary-dark-bg rounded-3xl">
-    <Header category="charts" title="Line" />
+  <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
+    <ChartsHeader category="Line" title="Inflation Rate" />
     <div className="w-full">
       <LineChart />
     </div>

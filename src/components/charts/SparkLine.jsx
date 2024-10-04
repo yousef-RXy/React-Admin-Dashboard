@@ -1,39 +1,37 @@
 import React from 'react';
-import {
-  SparklineComponent,
-  Inject,
-  SparklineTooltip,
-} from '@syncfusion/ej2-react-charts';
-import { useStateContext } from '../../contexts/ContextProvider';
+import { SparklineComponent, Inject, SparklineTooltip } from '@syncfusion/ej2-react-charts';
 
-const SparkLine = ({ currentColor, id, type, height, width, data, color }) => {
-  const { currentMode } = useStateContext();
+class SparkLine extends React.PureComponent {
+  render() {
+    const { id, height, width, color, data, type, currentColor } = this.props;
 
-  return (
-    <SparklineComponent
-      id={id}
-      height={height}
-      width={width}
-      lineWidth={1}
-      valueType="Numeric"
-      fill={color}
-      border={{ width: 2, color: currentColor }}
-      dataSource={data}
-      xName="x"
-      yName="yval"
-      type={type}
-      tooltipSettings={{ visible: true, format: '${x} : data ${yval}' }}
-      trackLineSettings={{ visible: true }}
-      axisSettings={{
-        lineSettings: {
-          color: currentMode === 'Dark' ? '#e5e5e5' : '#424242',
-        },
-      }}
-      background={currentMode === 'Dark' ? '#33373e' : '#fff'}
-    >
-      <Inject services={[SparklineTooltip]} />
-    </SparklineComponent>
-  );
-};
+    return (
+      <SparklineComponent
+        id={id}
+        height={height}
+        width={width}
+        lineWidth={1}
+        valueType="Numeric"
+        fill={color}
+        border={{ color: currentColor, width: 2 }}
+        tooltipSettings={{
+          visible: true,
+          // eslint-disable-next-line no-template-curly-in-string
+          format: '${x} : data ${yval}',
+          trackLineSettings: {
+            visible: true,
+          },
+        }}
+        markerSettings={{ visible: ['All'], size: 2.5, fill: currentColor }}
+        dataSource={data}
+        xName="x"
+        yName="yval"
+        type={type}
+      >
+        <Inject services={[SparklineTooltip]} />
+      </SparklineComponent>
+    );
+  }
+}
 
 export default SparkLine;

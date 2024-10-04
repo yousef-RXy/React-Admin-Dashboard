@@ -21,26 +21,27 @@ const LineChart = () => {
   const { currentMode } = useStateContext();
 
   return (
-    <div>
-      <ChartComponent
-        id="charts"
-        primaryXAxis={LinePrimaryXAxis}
-        primaryYAxis={LinePrimaryYAxis}
-        title="Inflation Rate in Percentage"
-        chartArea={{ border: { width: 0 } }}
-        tooltip={{ enable: true }}
-        width="100%"
-        height="500"
-        background={currentMode === 'Dark' ? '#33373e' : '#fff'}
-      >
-        <Inject services={[LineSeries, DateTime, Legend, Tooltip]} />
-        <SeriesCollectionDirective>
-          {lineCustomSeries.map((item, index) => (
-            <SeriesDirective key={index} {...item} />
-          ))}
-        </SeriesCollectionDirective>
-      </ChartComponent>
-    </div>
+    <ChartComponent
+      id="line-chart"
+      height="420px"
+      primaryXAxis={LinePrimaryXAxis}
+      primaryYAxis={LinePrimaryYAxis}
+      chartArea={{ border: { width: 0 } }}
+      tooltip={{ enable: true }}
+      background={currentMode === 'Dark' ? '#33373E' : '#fff'}
+      legendSettings={{
+        background: currentMode === 'Dark' ? '#33373E' : '#fff',
+        textStyle: { color: currentMode === 'Dark' ? '#D9D9D9' : '#333' },
+      }}
+    >
+      <Inject services={[LineSeries, DateTime, Legend, Tooltip]} />
+      <SeriesCollectionDirective>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        {lineCustomSeries.map((item, index) => (
+          <SeriesDirective key={index} {...item} />
+        ))}
+      </SeriesCollectionDirective>
+    </ChartComponent>
   );
 };
 

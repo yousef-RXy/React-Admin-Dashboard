@@ -57,7 +57,9 @@ function App() {
             <TooltipComponent content="Settings" position="TopCenter">
               <button
                 type="button"
-                className={`text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white rounded-full bg-[${currentColor}]`}
+                className={`text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white rounded-full bg-[${currentColor}] ${console.log(
+                  currentColor
+                )}`}
                 onClick={() => setThemeSettings(true)}
               >
                 <FiSettings />
@@ -111,7 +113,7 @@ function App() {
                 <Route path="/financial" element={<Financial />} />
                 <Route path="/color-mapping" element={<ColorMapping />} />
                 <Route path="/pyramid" element={<Pyramid />} />
-                <Route path="/staked" element={<Stacked />} />
+                <Route path="/stacked" element={<Stacked />} />
               </Routes>
             </div>
           </div>

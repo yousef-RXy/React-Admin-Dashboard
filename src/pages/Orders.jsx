@@ -14,13 +14,12 @@ import {
   Inject,
 } from '@syncfusion/ej2-react-grids';
 
-import { ordersData, contextMenuItems, ordersGrid } from '../data/dummy';
+import { ordersData, ordersGrid } from '../data/dummy';
 import { Header } from '../components';
 
 const Orders = () => {
-  const editing = { allowDeleting: true, allowEditing: true };
   return (
-    <div className="m-2 md:m-10 p-2 md:p-10 mt-16 bg-white dark:bg-secondary-dark-bg rounded-3xl">
+    <div className="m-2 md:m-10 p-2 md:p-10 mt-16 bg-white rounded-3xl">
       <Header category="page" title="Orders"></Header>
       <GridComponent
         id="grid"
